@@ -17,6 +17,9 @@ dependencies:
   '@saleor/app-sdk':
     specifier: ^0.45.0
     version: 0.45.0(graphql@16.8.1)(next@14.0.3)(react-dom@18.2.0)(react@18.2.0)
+  invariant:
+    specifier: ^2.2.4
+    version: 2.2.4
   nestjs-zod:
     specifier: ^3.0.0
     version: 3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@3.22.4)
@@ -3220,6 +3223,12 @@ packages:
     resolution: {integrity: sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==}
     engines: {node: '>= 0.10'}
     dev: true
+
+  /invariant@2.2.4:
+    resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
+    dependencies:
+      loose-envify: 1.4.0
+    dev: false
 
   /ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}

@@ -4,9 +4,10 @@ import { AppManifestModule } from './app-manifest/app-manifest.module';
 import { AppRegisterModule } from './app-register/app-register.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
+import { AplModule } from './apl/apl.module';
 
 @Module({
-  imports: [AppManifestModule, AppRegisterModule],
+  imports: [AppManifestModule, AppRegisterModule, AplModule],
   controllers: [],
   providers: [
     {
