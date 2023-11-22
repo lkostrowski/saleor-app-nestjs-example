@@ -25,7 +25,9 @@
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/serve-static": "^4.0.0",
     "@saleor/app-sdk": "^0.45.0",
+    "@urql/exchange-auth": "^2.1.4",
     "graphql": "16.7.1",
     "graphql-tag": "^2.12.6",
     "invariant": "^2.2.4",
@@ -33,7 +35,6 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "urql": "^4.0.6",
-    "@urql/exchange-auth": "^2.1.4",
     "zod": "^3.22.4"
   },
   "devDependencies": {

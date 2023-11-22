@@ -7,7 +7,9 @@ export const Config = () => {
     return (
       <div>
         <pre>
-          <code>{JSON.stringify(appBridgeState, null, 2)}</code>
+          <code style={{ color: '#111' }}>
+            {JSON.stringify(appBridgeState, null, 2)}
+          </code>
         </pre>
       </div>
     );
