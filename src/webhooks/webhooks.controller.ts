@@ -6,8 +6,9 @@ import { OrderCreatedService } from './order-created/order-created.service';
 export class WebhooksController {
   constructor(private orderCreatedService: OrderCreatedService) {}
 
+  // todo: graphql mapping invalid
   @Post('order-created')
-  orderCreated(@Body() body: OrderCreatedEventFragment) {
-    console.log('orderCreated', body);
+  orderCreated(@Body() body: { orderCreated: OrderCreatedEventFragment }) {
+    this.orderCreatedService.processWebhook(body.orderCreated);
   }
 }

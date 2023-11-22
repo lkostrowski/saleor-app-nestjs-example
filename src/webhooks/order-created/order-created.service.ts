@@ -1,6 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { WebhookManifest } from '@saleor/app-sdk/types';
-import { OrderCreatedDocument } from 'generated/graphql';
+import {
+  OrderCreatedDocument,
+  OrderCreatedEventFragment,
+} from 'generated/graphql';
 
 interface HasManifestSubscription {
   getWebhookManifest(baseUrl: string): WebhookManifest;
@@ -16,6 +19,10 @@ export const gqlAstToString = (ast: ASTNode) =>
 
 @Injectable()
 export class OrderCreatedService implements HasManifestSubscription {
+  processWebhook(payload: OrderCreatedEventFragment) {
+    // todo
+  }
+
   getWebhookManifest(baseUrl: string): WebhookManifest {
     return {
       name: 'order-created',

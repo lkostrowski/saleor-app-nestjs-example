@@ -6,8 +6,6 @@ fragment OrderCreatedEvent on OrderCreated {
 
 subscription OrderCreated {
   event {
-    ... on OrderCreated {
-      ...OrderCreatedEvent
-    }
+    ...OrderCreatedEvent
   }
 }
