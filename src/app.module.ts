@@ -6,9 +6,10 @@ import { APP_PIPE } from '@nestjs/core';
 import { ZodValidationPipe } from 'nestjs-zod';
 import { AplModule } from './apl/apl.module';
 import { AppController } from './app.controller';
+import { GraphqlModule } from './graphql/graphql.module';
 
 @Module({
-  imports: [AppManifestModule, AppRegisterModule, AplModule],
+  imports: [AppManifestModule, AppRegisterModule, AplModule, GraphqlModule],
   controllers: [AppController],
   providers: [
     {
