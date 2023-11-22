@@ -1,8 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppManifest } from '@saleor/app-sdk/types';
+import { OrderCreatedService } from 'src/webhooks/order-created/order-created.service';
 
 @Controller('manifest')
 export class AppManifestController {
+  constructor(private orderCreatedService: OrderCreatedService) {}
+
   @Get()
   getManifest(): AppManifest {
     return {
@@ -14,6 +17,11 @@ export class AppManifestController {
       appUrl: 'http://localhost:3000',
       tokenTargetUrl: 'http://host.docker.internal:3000/register', //todo -env
       author: 'Lukasz Ostrowski',
+      webhooks: [
+        this.orderCreatedService.getWebhookManifest(
+          'http://host.docker.internal:3000',
+        ),
+      ],
     };
   }
 }
