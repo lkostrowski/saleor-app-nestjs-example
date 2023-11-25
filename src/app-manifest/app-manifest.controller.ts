@@ -15,7 +15,7 @@ export class AppManifestController {
       name: 'Saleor App (Nestjs)',
       about: 'Saleor App description',
       permissions: ['MANAGE_ORDERS'],
-      appUrl: 'http://localhost:3000',
+      appUrl: 'http://localhost:5173',
       tokenTargetUrl: 'http://host.docker.internal:3000/register', //todo -env
       author: 'Lukasz Ostrowski',
       webhooks: [
