@@ -8,7 +8,7 @@ export class WebhooksController {
 
   // todo: graphql mapping invalid
   @Post('order-created')
-  orderCreated(@Body() body: { orderCreated: OrderCreatedEventFragment }) {
-    this.orderCreatedService.processWebhook(body.orderCreated);
+  orderCreated(@Body() body: OrderCreatedEventFragment) {
+    this.orderCreatedService.processWebhook(body);
   }
 }

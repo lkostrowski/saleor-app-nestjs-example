@@ -1,9 +1,11 @@
+import { InjectQueue } from '@nestjs/bull';
 import { Injectable } from '@nestjs/common';
 import { WebhookManifest } from '@saleor/app-sdk/types';
 import {
   OrderCreatedDocument,
   OrderCreatedEventFragment,
 } from 'generated/graphql';
+import { Queue } from 'bull';
 
 interface HasManifestSubscription {
   getWebhookManifest(baseUrl: string): WebhookManifest;
@@ -19,8 +21,17 @@ export const gqlAstToString = (ast: ASTNode) =>
 
 @Injectable()
 export class OrderCreatedService implements HasManifestSubscription {
-  processWebhook(payload: OrderCreatedEventFragment) {
-    // todo
+  constructor(@InjectQueue('orders-export') private ordersQueue: Queue) {}
+
+  async processWebhook(payload: OrderCreatedEventFragment) {
+    const job = await this.ordersQueue.add('send-order-to-erp', {
+      order: payload,
+    });
+
+    console.log('job:');
+    console.log(job.id);
+
+    return job;
   }
 
   getWebhookManifest(baseUrl: string): WebhookManifest {

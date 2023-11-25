@@ -7,6 +7,7 @@ export class AppManifestController {
   constructor(private orderCreatedService: OrderCreatedService) {}
 
   @Get()
+  // todo: make service
   getManifest(): AppManifest {
     return {
       id: 'saleor-app-nestjs',

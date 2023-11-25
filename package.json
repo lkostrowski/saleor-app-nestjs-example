@@ -22,12 +22,14 @@
     "generate": "graphql-codegen"
   },
   "dependencies": {
+    "@nestjs/bull": "^10.0.1",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/serve-static": "^4.0.0",
     "@saleor/app-sdk": "^0.45.0",
     "@urql/exchange-auth": "^2.1.4",
+    "bull": "^4.11.5",
     "graphql": "16.7.1",
     "graphql-tag": "^2.12.6",
     "invariant": "^2.2.4",

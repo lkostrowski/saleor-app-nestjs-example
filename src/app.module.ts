@@ -9,6 +9,7 @@ import { AppRegisterModule } from './app-register/app-register.module';
 import { GraphqlModule } from './graphql/graphql.module';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { join } from 'path';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -19,6 +20,13 @@ import { join } from 'path';
     WebhooksModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', 'frontend', 'frontend', 'dist'),
+    }),
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6666,
+        password: 'my-password',
+      },
     }),
   ],
   controllers: [],
