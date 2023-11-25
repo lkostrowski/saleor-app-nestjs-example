@@ -6,12 +6,11 @@ import {
   OrderCreatedEventFragment,
 } from 'generated/graphql';
 import { Queue } from 'bull';
+import { ASTNode, print } from 'graphql';
 
 interface HasManifestSubscription {
   getWebhookManifest(baseUrl: string): WebhookManifest;
 }
-
-import { ASTNode, print } from 'graphql';
 
 export const gqlAstToString = (ast: ASTNode) =>
   print(ast) // convert AST to string
@@ -25,11 +24,8 @@ export class OrderCreatedService implements HasManifestSubscription {
 
   async processWebhook(payload: OrderCreatedEventFragment) {
     const job = await this.ordersQueue.add('send-order-to-erp', {
-      order: payload,
+      order: payload.order,
     });
-
-    console.log('job:');
-    console.log(job.id);
 
     return job;
   }

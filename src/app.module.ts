@@ -10,6 +10,7 @@ import { GraphqlModule } from './graphql/graphql.module';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { join } from 'path';
 import { BullModule } from '@nestjs/bull';
+import { ErpOrderExportModule } from './erp-order-export/erp-order-export.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { BullModule } from '@nestjs/bull';
         password: 'my-password',
       },
     }),
+    ErpOrderExportModule,
   ],
   controllers: [],
   providers: [
