@@ -14,6 +14,7 @@ import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 // import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
+import { OrdersExportModule } from './orders-export/orders-export.module';
 
 // diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
@@ -23,9 +24,9 @@ import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
     AppRegisterModule,
     AplModule,
     GraphqlModule,
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'frontend', 'dist'),
-    }),
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '..', '..', 'frontend', 'dist'),
+    // }),
     BullModule.forRoot({
       redis: {
         host: 'localhost',
@@ -39,6 +40,7 @@ import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
       instrumentations: [new HttpInstrumentation({ enabled: true })],
       autoDetectResources: true,
     }),
+    OrdersExportModule,
   ],
   controllers: [],
   providers: [

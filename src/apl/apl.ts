@@ -5,7 +5,8 @@ import { AuthData, APL as IAPL } from '@saleor/app-sdk/APL';
  */
 export abstract class APL implements IAPL {
   set: (authData: AuthData) => Promise<void>;
-  get(): never {
+  get(saleorApiUrl: string): Promise<AuthData> {
+    console.log(saleorApiUrl);
     throw new Error('Method not implemented.');
   }
 

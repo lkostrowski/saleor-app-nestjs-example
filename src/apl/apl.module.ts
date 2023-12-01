@@ -7,7 +7,7 @@ import { FileAPL } from '@saleor/app-sdk/APL';
   providers: [
     {
       provide: APL,
-      useClass: FileAPL,
+      useValue: new FileAPL({ fileName: 'apl.json' }),
     },
   ],
   exports: [APL],

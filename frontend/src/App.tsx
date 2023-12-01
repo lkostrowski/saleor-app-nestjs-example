@@ -1,5 +1,5 @@
 import { AppBridge, AppBridgeProvider } from '@saleor/app-sdk/app-bridge';
-import { Box, Text, ThemeProvider } from '@saleor/macaw-ui';
+import { Box, ThemeProvider } from '@saleor/macaw-ui';
 import '@saleor/macaw-ui/style';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Config } from './Config';
