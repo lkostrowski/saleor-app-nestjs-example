@@ -14,10 +14,9 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <AppBridgeProvider appBridgeInstance={ab}>
           <Box margin={5}>
-            <Text variant="hero">Last order exports jobs</Text>
             <Config />
           </Box>
-        </AppBridgeProvider>{' '}
+        </AppBridgeProvider>
       </QueryClientProvider>
     </ThemeProvider>
   );

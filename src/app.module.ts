@@ -9,16 +9,13 @@ import { join } from 'path';
 import { AplModule } from './apl/apl.module';
 import { AppManifestModule } from './app-manifest/app-manifest.module';
 import { AppRegisterModule } from './app-register/app-register.module';
-import { ErpOrderExportModule } from './erp-order-export/erp-order-export.module';
 import { GraphqlModule } from './graphql/graphql.module';
-import { OtelModule } from './otel/otel.module';
-import { WebhooksModule } from './webhooks/webhooks.module';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
-import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+// import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
 
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
+// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 @Module({
   imports: [
@@ -26,9 +23,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
     AppRegisterModule,
     AplModule,
     GraphqlModule,
-    WebhooksModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'frontend', 'frontend', 'dist'),
+      rootPath: join(__dirname, '..', '..', 'frontend', 'dist'),
     }),
     BullModule.forRoot({
       redis: {
@@ -37,14 +33,12 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
         password: 'my-password',
       },
     }),
-    ErpOrderExportModule,
     OpenTelemetryModule.forRoot({
       serviceName: 'nestjs-opentelemetry-example',
       spanProcessor: new BatchSpanProcessor(new OTLPTraceExporter({})),
       instrumentations: [new HttpInstrumentation({ enabled: true })],
       autoDetectResources: true,
     }),
-    OtelModule,
   ],
   controllers: [],
   providers: [
