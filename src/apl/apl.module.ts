@@ -1,13 +1,13 @@
 import { Global, Module } from '@nestjs/common';
-import { APL } from './apl';
 import { FileAPL } from '@saleor/app-sdk/APL';
+import { APL } from './apl';
 
 @Global()
 @Module({
   providers: [
     {
       provide: APL,
-      useValue: new FileAPL({ fileName: 'apl.json' }),
+      useValue: new FileAPL(),
     },
   ],
   exports: [APL],

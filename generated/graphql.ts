@@ -32222,6 +32222,17 @@ export type AppQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AppQuery = { __typename?: 'Query', app?: { __typename?: 'App', id: string } | null };
 
+export type AddressFragment = { __typename?: 'Address', streetAddress1: string, streetAddress2: string, city: string, postalCode: string, firstName: string, lastName: string, country: { __typename?: 'CountryDisplay', code: string } };
+
+export type OrderToExportFragment = { __typename?: 'Order', id: string, shippingMethodName?: string | null, total: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number }, net: { __typename?: 'Money', amount: number } }, billingAddress?: { __typename?: 'Address', streetAddress1: string, streetAddress2: string, city: string, postalCode: string, firstName: string, lastName: string, country: { __typename?: 'CountryDisplay', code: string } } | null, shippingAddress?: { __typename?: 'Address', streetAddress1: string, streetAddress2: string, city: string, postalCode: string, firstName: string, lastName: string, country: { __typename?: 'CountryDisplay', code: string } } | null, channel: { __typename?: 'Channel', slug: string }, lines: Array<{ __typename?: 'OrderLine', quantity: number, productSku?: string | null, productVariantId?: string | null, variantName: string }> };
+
+export type OrdersPageQueryVariables = Exact<{
+  cursor?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type OrdersPageQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderCountableConnection', pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null }, edges: Array<{ __typename?: 'OrderCountableEdge', node: { __typename?: 'Order', id: string, shippingMethodName?: string | null, total: { __typename?: 'TaxedMoney', gross: { __typename?: 'Money', amount: number }, net: { __typename?: 'Money', amount: number } }, billingAddress?: { __typename?: 'Address', streetAddress1: string, streetAddress2: string, city: string, postalCode: string, firstName: string, lastName: string, country: { __typename?: 'CountryDisplay', code: string } } | null, shippingAddress?: { __typename?: 'Address', streetAddress1: string, streetAddress2: string, city: string, postalCode: string, firstName: string, lastName: string, country: { __typename?: 'CountryDisplay', code: string } } | null, channel: { __typename?: 'Channel', slug: string }, lines: Array<{ __typename?: 'OrderLine', quantity: number, productSku?: string | null, productVariantId?: string | null, variantName: string }> } }> } | null };
+
 export type OrderCreatedEventFragment = { __typename?: 'OrderCreated', order?: { __typename?: 'Order', id: string } | null };
 
 export type OrderCreatedSubscriptionVariables = Exact<{ [key: string]: never; }>;
@@ -32229,6 +32240,48 @@ export type OrderCreatedSubscriptionVariables = Exact<{ [key: string]: never; }>
 
 export type OrderCreatedSubscription = { __typename?: 'Subscription', event?: { __typename?: 'AccountChangeEmailRequested' } | { __typename?: 'AccountConfirmationRequested' } | { __typename?: 'AccountConfirmed' } | { __typename?: 'AccountDeleteRequested' } | { __typename?: 'AccountDeleted' } | { __typename?: 'AccountEmailChanged' } | { __typename?: 'AccountSetPasswordRequested' } | { __typename?: 'AddressCreated' } | { __typename?: 'AddressDeleted' } | { __typename?: 'AddressUpdated' } | { __typename?: 'AppDeleted' } | { __typename?: 'AppInstalled' } | { __typename?: 'AppStatusChanged' } | { __typename?: 'AppUpdated' } | { __typename?: 'AttributeCreated' } | { __typename?: 'AttributeDeleted' } | { __typename?: 'AttributeUpdated' } | { __typename?: 'AttributeValueCreated' } | { __typename?: 'AttributeValueDeleted' } | { __typename?: 'AttributeValueUpdated' } | { __typename?: 'CalculateTaxes' } | { __typename?: 'CategoryCreated' } | { __typename?: 'CategoryDeleted' } | { __typename?: 'CategoryUpdated' } | { __typename?: 'ChannelCreated' } | { __typename?: 'ChannelDeleted' } | { __typename?: 'ChannelMetadataUpdated' } | { __typename?: 'ChannelStatusChanged' } | { __typename?: 'ChannelUpdated' } | { __typename?: 'CheckoutCreated' } | { __typename?: 'CheckoutFilterShippingMethods' } | { __typename?: 'CheckoutFullyPaid' } | { __typename?: 'CheckoutMetadataUpdated' } | { __typename?: 'CheckoutUpdated' } | { __typename?: 'CollectionCreated' } | { __typename?: 'CollectionDeleted' } | { __typename?: 'CollectionMetadataUpdated' } | { __typename?: 'CollectionUpdated' } | { __typename?: 'CustomerCreated' } | { __typename?: 'CustomerMetadataUpdated' } | { __typename?: 'CustomerUpdated' } | { __typename?: 'DraftOrderCreated' } | { __typename?: 'DraftOrderDeleted' } | { __typename?: 'DraftOrderUpdated' } | { __typename?: 'FulfillmentApproved' } | { __typename?: 'FulfillmentCanceled' } | { __typename?: 'FulfillmentCreated' } | { __typename?: 'FulfillmentMetadataUpdated' } | { __typename?: 'FulfillmentTrackingNumberUpdated' } | { __typename?: 'GiftCardCreated' } | { __typename?: 'GiftCardDeleted' } | { __typename?: 'GiftCardExportCompleted' } | { __typename?: 'GiftCardMetadataUpdated' } | { __typename?: 'GiftCardSent' } | { __typename?: 'GiftCardStatusChanged' } | { __typename?: 'GiftCardUpdated' } | { __typename?: 'InvoiceDeleted' } | { __typename?: 'InvoiceRequested' } | { __typename?: 'InvoiceSent' } | { __typename?: 'ListStoredPaymentMethods' } | { __typename?: 'MenuCreated' } | { __typename?: 'MenuDeleted' } | { __typename?: 'MenuItemCreated' } | { __typename?: 'MenuItemDeleted' } | { __typename?: 'MenuItemUpdated' } | { __typename?: 'MenuUpdated' } | { __typename?: 'OrderBulkCreated' } | { __typename?: 'OrderCancelled' } | { __typename?: 'OrderConfirmed' } | { __typename?: 'OrderCreated', order?: { __typename?: 'Order', id: string } | null } | { __typename?: 'OrderExpired' } | { __typename?: 'OrderFilterShippingMethods' } | { __typename?: 'OrderFulfilled' } | { __typename?: 'OrderFullyPaid' } | { __typename?: 'OrderFullyRefunded' } | { __typename?: 'OrderMetadataUpdated' } | { __typename?: 'OrderPaid' } | { __typename?: 'OrderRefunded' } | { __typename?: 'OrderUpdated' } | { __typename?: 'PageCreated' } | { __typename?: 'PageDeleted' } | { __typename?: 'PageTypeCreated' } | { __typename?: 'PageTypeDeleted' } | { __typename?: 'PageTypeUpdated' } | { __typename?: 'PageUpdated' } | { __typename?: 'PaymentAuthorize' } | { __typename?: 'PaymentCaptureEvent' } | { __typename?: 'PaymentConfirmEvent' } | { __typename?: 'PaymentGatewayInitializeSession' } | { __typename?: 'PaymentGatewayInitializeTokenizationSession' } | { __typename?: 'PaymentListGateways' } | { __typename?: 'PaymentMethodInitializeTokenizationSession' } | { __typename?: 'PaymentMethodProcessTokenizationSession' } | { __typename?: 'PaymentProcessEvent' } | { __typename?: 'PaymentRefundEvent' } | { __typename?: 'PaymentVoidEvent' } | { __typename?: 'PermissionGroupCreated' } | { __typename?: 'PermissionGroupDeleted' } | { __typename?: 'PermissionGroupUpdated' } | { __typename?: 'ProductCreated' } | { __typename?: 'ProductDeleted' } | { __typename?: 'ProductExportCompleted' } | { __typename?: 'ProductMediaCreated' } | { __typename?: 'ProductMediaDeleted' } | { __typename?: 'ProductMediaUpdated' } | { __typename?: 'ProductMetadataUpdated' } | { __typename?: 'ProductUpdated' } | { __typename?: 'ProductVariantBackInStock' } | { __typename?: 'ProductVariantCreated' } | { __typename?: 'ProductVariantDeleted' } | { __typename?: 'ProductVariantMetadataUpdated' } | { __typename?: 'ProductVariantOutOfStock' } | { __typename?: 'ProductVariantStockUpdated' } | { __typename?: 'ProductVariantUpdated' } | { __typename?: 'PromotionCreated' } | { __typename?: 'PromotionDeleted' } | { __typename?: 'PromotionEnded' } | { __typename?: 'PromotionRuleCreated' } | { __typename?: 'PromotionRuleDeleted' } | { __typename?: 'PromotionRuleUpdated' } | { __typename?: 'PromotionStarted' } | { __typename?: 'PromotionUpdated' } | { __typename?: 'SaleCreated' } | { __typename?: 'SaleDeleted' } | { __typename?: 'SaleToggle' } | { __typename?: 'SaleUpdated' } | { __typename?: 'ShippingListMethodsForCheckout' } | { __typename?: 'ShippingPriceCreated' } | { __typename?: 'ShippingPriceDeleted' } | { __typename?: 'ShippingPriceUpdated' } | { __typename?: 'ShippingZoneCreated' } | { __typename?: 'ShippingZoneDeleted' } | { __typename?: 'ShippingZoneMetadataUpdated' } | { __typename?: 'ShippingZoneUpdated' } | { __typename?: 'ShopMetadataUpdated' } | { __typename?: 'StaffCreated' } | { __typename?: 'StaffDeleted' } | { __typename?: 'StaffSetPasswordRequested' } | { __typename?: 'StaffUpdated' } | { __typename?: 'StoredPaymentMethodDeleteRequested' } | { __typename?: 'ThumbnailCreated' } | { __typename?: 'TransactionCancelationRequested' } | { __typename?: 'TransactionChargeRequested' } | { __typename?: 'TransactionInitializeSession' } | { __typename?: 'TransactionItemMetadataUpdated' } | { __typename?: 'TransactionProcessSession' } | { __typename?: 'TransactionRefundRequested' } | { __typename?: 'TranslationCreated' } | { __typename?: 'TranslationUpdated' } | { __typename?: 'VoucherCreated' } | { __typename?: 'VoucherDeleted' } | { __typename?: 'VoucherMetadataUpdated' } | { __typename?: 'VoucherUpdated' } | { __typename?: 'WarehouseCreated' } | { __typename?: 'WarehouseDeleted' } | { __typename?: 'WarehouseMetadataUpdated' } | { __typename?: 'WarehouseUpdated' } | null };
 
+export const UntypedAddressFragmentDoc = gql`
+    fragment Address on Address {
+  streetAddress1
+  streetAddress2
+  city
+  country {
+    code
+  }
+  postalCode
+  firstName
+  lastName
+}
+    `;
+export const UntypedOrderToExportFragmentDoc = gql`
+    fragment OrderToExport on Order {
+  total {
+    gross {
+      amount
+    }
+    net {
+      amount
+    }
+  }
+  id
+  billingAddress {
+    ...Address
+  }
+  shippingAddress {
+    ...Address
+  }
+  shippingMethodName
+  channel {
+    slug
+  }
+  lines {
+    quantity
+    productSku
+    productVariantId
+    variantName
+  }
+}
+    `;
 export const UntypedOrderCreatedEventFragmentDoc = gql`
     fragment OrderCreatedEvent on OrderCreated {
   order {
@@ -32247,6 +32300,26 @@ export const UntypedAppDocument = gql`
 export function useAppQuery(options?: Omit<Urql.UseQueryArgs<AppQueryVariables>, 'query'>) {
   return Urql.useQuery<AppQuery, AppQueryVariables>({ query: UntypedAppDocument, ...options });
 };
+export const UntypedOrdersPageDocument = gql`
+    query OrdersPage($cursor: String) {
+  orders(first: 100, after: $cursor) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...OrderToExport
+      }
+    }
+  }
+}
+    ${UntypedOrderToExportFragmentDoc}
+${UntypedAddressFragmentDoc}`;
+
+export function useOrdersPageQuery(options?: Omit<Urql.UseQueryArgs<OrdersPageQueryVariables>, 'query'>) {
+  return Urql.useQuery<OrdersPageQuery, OrdersPageQueryVariables>({ query: UntypedOrdersPageDocument, ...options });
+};
 export const UntypedOrderCreatedDocument = gql`
     subscription OrderCreated {
   event {
@@ -32258,6 +32331,9 @@ export const UntypedOrderCreatedDocument = gql`
 export function useOrderCreatedSubscription<TData = OrderCreatedSubscription>(options: Omit<Urql.UseSubscriptionArgs<OrderCreatedSubscriptionVariables>, 'query'> = {}, handler?: Urql.SubscriptionHandler<OrderCreatedSubscription, TData>) {
   return Urql.useSubscription<OrderCreatedSubscription, TData, OrderCreatedSubscriptionVariables>({ query: UntypedOrderCreatedDocument, ...options }, handler);
 };
+export const AddressFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Address"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Address"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"streetAddress1"}},{"kind":"Field","name":{"kind":"Name","value":"streetAddress2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"country"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}}]}}]} as unknown as DocumentNode<AddressFragment, unknown>;
+export const OrderToExportFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"OrderToExport"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Order"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"gross"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}}]}},{"kind":"Field","name":{"kind":"Name","value":"net"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"billingAddress"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"shippingAddress"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"shippingMethodName"}},{"kind":"Field","name":{"kind":"Name","value":"channel"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"Field","name":{"kind":"Name","value":"lines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"productSku"}},{"kind":"Field","name":{"kind":"Name","value":"productVariantId"}},{"kind":"Field","name":{"kind":"Name","value":"variantName"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Address"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Address"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"streetAddress1"}},{"kind":"Field","name":{"kind":"Name","value":"streetAddress2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"country"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}}]}}]} as unknown as DocumentNode<OrderToExportFragment, unknown>;
 export const OrderCreatedEventFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"OrderCreatedEvent"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"OrderCreated"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<OrderCreatedEventFragment, unknown>;
 export const AppDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"App"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"app"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<AppQuery, AppQueryVariables>;
+export const OrdersPageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"OrdersPage"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"cursor"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"orders"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"100"}},{"kind":"Argument","name":{"kind":"Name","value":"after"},"value":{"kind":"Variable","name":{"kind":"Name","value":"cursor"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pageInfo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hasNextPage"}},{"kind":"Field","name":{"kind":"Name","value":"endCursor"}}]}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"OrderToExport"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Address"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Address"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"streetAddress1"}},{"kind":"Field","name":{"kind":"Name","value":"streetAddress2"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"country"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"Field","name":{"kind":"Name","value":"postalCode"}},{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"OrderToExport"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Order"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"gross"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}}]}},{"kind":"Field","name":{"kind":"Name","value":"net"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"amount"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"billingAddress"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"shippingAddress"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Address"}}]}},{"kind":"Field","name":{"kind":"Name","value":"shippingMethodName"}},{"kind":"Field","name":{"kind":"Name","value":"channel"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}},{"kind":"Field","name":{"kind":"Name","value":"lines"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"quantity"}},{"kind":"Field","name":{"kind":"Name","value":"productSku"}},{"kind":"Field","name":{"kind":"Name","value":"productVariantId"}},{"kind":"Field","name":{"kind":"Name","value":"variantName"}}]}}]}}]} as unknown as DocumentNode<OrdersPageQuery, OrdersPageQueryVariables>;
 export const OrderCreatedDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"subscription","name":{"kind":"Name","value":"OrderCreated"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"event"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"OrderCreatedEvent"}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"OrderCreatedEvent"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"OrderCreated"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"order"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<OrderCreatedSubscription, OrderCreatedSubscriptionVariables>;

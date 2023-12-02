@@ -17,10 +17,9 @@ export class OrdersExportController {
     @Body() body: { saleorApiUrl: string },
     @Headers('Authorization') token: string,
   ) {
-    // const authData = await this.apl.get(body.saleorApiUrl);
-    // console.log(authData);
+    const authData = await this.apl.get(body.saleorApiUrl);
 
-    // // todo apl is undefined
+    // TODO: Enable, JWT fails
     // await verifyJWT({
     //   appId: authData.appId,
     //   saleorApiUrl: authData.saleorApiUrl,
@@ -29,6 +28,7 @@ export class OrdersExportController {
 
     const job = await this.ordersQueue.add('export-orders', {
       saleorApiUrl: body.saleorApiUrl,
+      token: authData.token, //todo should token be passed here?
     });
 
     return { jobId: job.id };

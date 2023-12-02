@@ -1,0 +1,53 @@
+fragment Address on Address {
+  streetAddress1
+  streetAddress2
+  city
+  country {
+    code
+  }
+  postalCode
+  firstName
+  lastName
+}
+
+fragment OrderToExport on Order {
+  total {
+    gross {
+      amount
+    }
+    net {
+      amount
+    }
+  }
+  id
+  billingAddress {
+    ...Address
+  }
+  shippingAddress {
+    ...Address
+  }
+  shippingMethodName
+  channel {
+    slug
+  }
+  lines {
+    quantity
+    productSku
+    productVariantId
+    variantName
+  }
+}
+
+query OrdersPage($cursor: String) {
+  orders(first: 100, after: $cursor) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        ...OrderToExport
+      }
+    }
+  }
+}

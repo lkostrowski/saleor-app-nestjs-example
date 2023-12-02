@@ -10,7 +10,7 @@ const scheduleOrdersExport = (params: { token: string }) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      saleorApiUrl: 'http://host.docker.internal:3000/graphql',
+      saleorApiUrl: 'http://localhost:8000/graphql/',
     }),
   }).then((res) => res.json());
 

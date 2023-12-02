@@ -31,8 +31,15 @@ export class AppRegisterController {
 
     const appResponse = await graphqlClient.query(AppDocument, {});
     const appId = appResponse.data.app.id;
+    const jwks = '{}';
 
-    this.apl.set({ token: body.auth_token, appId, saleorApiUrl });
+    this.apl.set({
+      token: body.auth_token,
+      appId,
+      saleorApiUrl,
+      domain: new URL(saleorApiUrl).host,
+      jwks,
+    });
 
     return response.status(200).send();
   }
